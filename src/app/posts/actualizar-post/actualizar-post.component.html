@@ -1,0 +1,57 @@
+<div *ngIf="cargando" class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-spinner" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+
+<div *ngIf="!cargando && !usuarioActualizado" class="mx-5 mb-3">
+    <h1>ACTUALIZAR POSTS</h1>
+
+    <div class="col-md-6">
+        <label for="titulo" class="form-label">Titulo</label>
+        <input type="text" [(ngModel)]="post.title" class="form-control" id="titulo">
+    </div>
+    <div>
+        <label for="descripcion" class="form-label">Descripcion</label>
+        <textarea type="text" [(ngModel)]="post.body" class="form-control" id="descripcion"></textarea>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn btn-secondary mt-5" (click)="volver()">Cancel</button>
+        <button type="button" class="btn btn-success mt-5" (click)="actualizarPost()">Guardar</button>
+    </div>
+    
+</div>
+
+<div *ngIf="!cargando && usuarioActualizado" class="mx-5 mb-3">
+    <h1>POST ACTUALIZADO!!</h1>
+
+    <div class="mb-3 row">
+        <label for="id" class="col-sm-2 col-form-label">ID</label>
+        <div class="col-sm-10">
+            <span>{{post.id}}</span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="Titulo" class="col-sm-2 col-form-label">Titulo</label>
+        <div class="col-sm-10">
+            <span>{{post.title}}</span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+        <div class="col-sm-10">
+            <span>{{post.body}}</span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Usuario ID</label>
+        <div class="col-sm-10">
+            <span>{{post.userId}}</span>
+        </div>
+    </div>
+    
+</div>

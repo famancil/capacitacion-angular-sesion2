@@ -28,4 +28,36 @@ export class PostService {
         catchError(error => throwError(() => error))
       );
   }
+
+  enviarPost(data:any) {
+
+    const url = `${this.api}/posts`;
+
+    // Datos generales de la ficha
+    return this.http.post(url,data)
+      .pipe(
+        map(
+          // Consulta exitosa
+          (res: any) => res,
+        ),
+        // Catch de errores
+        catchError(error => throwError(() => error))
+      );
+  }
+
+  actualizarPost(data:any) {
+
+    const url = `${this.api}/posts/1`;
+
+    // Datos generales de la ficha
+    return this.http.put(url,data)
+      .pipe(
+        map(
+          // Consulta exitosa
+          (res: any) => res,
+        ),
+        // Catch de errores
+        catchError(error => throwError(() => error))
+      );
+  }
 }

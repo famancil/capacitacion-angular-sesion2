@@ -1,14 +1,46 @@
 <h1>LISTA DE POSTS.</h1>
 
-<button *ngIf="!mostrarPosts" type="button" (click)="mostrarListaPosts()">Mostrar Lista de Posts</button>
-<button *ngIf="mostrarPosts" type="button" (click)="mostrarListaPosts()">Ocultar Lista de Posts</button>
+<button *ngIf="!mostrarPosts" type="button" class="btn btn-secondary" (click)="mostrarListaPosts()">Mostrar Lista de Posts</button>
+<button *ngIf="mostrarPosts" type="button" class="btn btn-secondary" (click)="mostrarListaPosts()">Ocultar Lista de Posts</button>
+<button type="button" class="btn btn-success" style="margin-left: 10px;" (click)="crearPost()">Crear Post</button>
 
 <div *ngIf="mostrarPosts">
-  <div *ngFor="let post of posts" style="text-align: center;">
-    <h3>TITULO</h3>
-    <h3>{{post.title}}</h3>
-    <p>DESCRIPCION</p>
-    <p>{{post.body}}</p>
-    <br/>
-  </div>
+    <table *ngIf="mostrarPosts" class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of posts  | paginate: {
+            itemsPerPage: 10,
+            currentPage: pagina,
+            totalItems: posts.length} ; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ post.title }}
+          </td>
+          <td>{{ post.body }}</td>
+          <td>
+            <div>
+              <button class="btn btn-primary" (click)="actualizar(post.id)">
+                Editar</button>
+              <button class="btn btn-danger" (click)="eliminar()">
+                Eliminar</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="paginacion">
+        <pagination-controls class="paginacion-control" (pageChange)="cambiarPagina($event)"
+            previousLabel="Anterior"
+            nextLabel="Siguiente">
+        </pagination-controls>
+    </div>
 </div>
+
+

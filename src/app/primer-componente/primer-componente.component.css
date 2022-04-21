@@ -1,15 +1,7 @@
-.hello-world{
-    background: orange;
-    color: white;
-  }
-  
-  .color-red{
-    background: red;
-    color: white;
-  }
-  
-  .color-blue{
-    background: blue;
-    color: white;
-  }
-  
+.paginacion {
+    width: 100%;
+}
+
+.paginacion-control{
+    display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;
+}
