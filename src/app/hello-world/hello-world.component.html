@@ -1,0 +1,37 @@
+<div [ngClass]="{'hello-world': color == -1 || color == 0, 'color-red': color == 1, 'color-blue':color == 2  }" class="hello-world">
+    <h1 [ngStyle]="{'font-size':size}">{{title}}</h1>
+    <h2> Ejemplo </h2>
+  </div>
+  
+  <br/>
+  
+  <div>
+    <label for="title" style="font-size: x-large;">Titulo</label>
+    <br/>
+    <input type="text" [(ngModel)]="title" style="font-size: x-large;">
+  </div>
+  
+  <br/>
+  
+  <div>
+    <label for="background" style="font-size: x-large;">Color de Fondo</label>
+    <br>
+    <select id="background" 
+      [(ngModel)]="color" style="font-size: x-large;">
+      <option value="-1" selected="">«Seleccione color»</option>
+      <option *ngFor="let col of colors" [value]="col.value">{{col.description}}</option>
+    </select>
+  </div>
+  
+  <br/>
+  
+  <div>
+    <label for="title" style="font-size: x-large;">Titulo, Tamaño de letra</label>
+    <br>
+    <select id="background" 
+      [(ngModel)]="size" style="font-size: x-large;">
+      <option value="null" selected="">«Seleccione tamaño</option>
+      <option *ngFor="let sizeVal of sizes" [value]="sizeVal">{{sizeVal}}</option>
+    </select>
+  </div>
+  
