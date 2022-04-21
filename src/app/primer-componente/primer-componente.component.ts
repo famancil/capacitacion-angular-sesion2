@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../models/Post';
 import { PostService } from '../providers/post.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PostService } from '../providers/post.service';
 })
 export class PrimerComponenteComponent implements OnInit {
 
-  posts: any[] = [];
+  posts: Post[] = [];
   mostrarPosts: boolean = false;
 
   constructor(private postService: PostService){
